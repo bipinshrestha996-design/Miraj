@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gay test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine?</title>
     <style>
         body {
             display: flex;
@@ -13,33 +13,25 @@
             margin: 0;
             background-color: #ffdeeb;
             font-family: sans-serif;
-            overflow: hidden;
-            touch-action: manipulation;
         }
         .card {
             background: white;
             padding: 30px;
-            border-radius: 20px;
+            border-radius: 20px;😳
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             text-align: center;
-            width: 85%;
-            max-width: 350px;
+            width: 350px;
             position: relative;
             min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
         }
-        img { width: 100%; max-width: 250px; border-radius: 10px; margin-bottom: 15px; }
-        h1 { font-size: 1.5rem; color: #333; margin: 10px 0; }
+        img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+        h1 { font-size: 1.5rem; color: #333; }
         .btn-container {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
             height: 50px;
-            width: 100%;
         }
         button {
             padding: 10px 25px;
@@ -47,30 +39,24 @@
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
-            touch-action: none;
         }
-        #yesBtn { 
-            background-color: #e91e63; 
-            color: white; 
-            z-index: 1;
-        }
+        #yesBtn { background-color: #e91e63; color: white; }
         #noBtn { 
             background-color: #eee; 
             color: #444; 
             position: absolute;
-            z-index: 10;
-            transition: 0.1s;
+            z-index: 1000; /* Ensures the button never hides behind other elements */
         }
     </style>
 </head>
 <body>
 
     <div class="card" id="mainCard">
-        <img id="displayImg" src="https://media.tenor.com/A9f9K_f5G_0AAAAC/pepe-julien.gif">
-        <h1 id="mainHeading">Miraj, are you gay?</h1>
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Jzm8HIdBCuhvFcEV1E/giphy.gif">
+        <h1>Miraj, Are you Gay?</h1>
         <div class="btn-container">
             <button id="yesBtn" onclick="celebrate()">Yes</button>
-            <button id="noBtn">No</button>
+            <button id="noBtn" onmouseover="moveButton()">No</button>
         </div>
     </div>
 
@@ -85,16 +71,16 @@
             noBtn.style.top = Math.random() * maxY + 'px';
         }
 
-        noBtn.addEventListener('mouseover', moveButton);
+        /* MOBILE FIX: Adds touch support so it runs away from taps */
         noBtn.addEventListener('touchstart', (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Prevents the actual click from happening
             moveButton();
         });
 
         function celebrate() {
             document.getElementById('mainCard').innerHTML = `
-                <h1>YAY! 🎉</h1>
-                <img src="https://media0.giphy.com/media/daf7b7/giphy.gif" style="width:100%; max-width: 300px;">
+                <h1>FUCK!!! </h1>
+                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/relnvfSEa2Qa125uPA/giphy.gif" style="width:100%">
             `;
         }
     </script>
