@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Miraj is Gay</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffdeeb;
+            font-family: sans-serif;
+            overflow: hidden; /* Prevents scrolling when button moves */
+            touch-action: manipulation;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 85%;
+            max-width: 350px;
+            position: relative;
+            min-height: 300px;
+        }
+        img { width: 120px; margin-bottom: 15px; }
+        h1 { font-size: 1.5rem; color: #333; }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            height: 50px;
+        }
+        button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            touch-action: none; /* Prevents default phone behavior */
+        }
+        #yesBtn { 
+            background-color: #e91e63; 
+            color: white;
+            z-index: 1; /* Keeps Yes below the No button initially */
+        }
+        #noBtn { 
+            background-color: #eee; 
+            color: #444; 
+            position: absolute;
+            z-index: 10; /* Ensures No floats ABOVE everything else */
+            transition: 0.1s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="mainCard">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif">
+        <h1>Are you Gay?</h1>
+        <div class="btn-container">
+            <button id="yesBtn" onclick="celebrate()">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const card = document.getElementById('mainCard');
+
+        function moveButton() {
+            // Calculate random position within the card
+            const maxX = card.clientWidth - noBtn.clientWidth;
+            const maxY = card.clientHeight - noBtn.clientHeight;
+            
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+        }
+
+        // Works for Laptop
+        noBtn.addEventListener('mouseover', moveButton);
+        
+        // Works for Phone (triggers when they try to tap it)
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Stops the actual "click" from happening
+            moveButton();
+        });
+
+        function celebrate() {
+            document.getElementById('mainCard').innerHTML = `
+                <h1>YAY! 🎉</h1>
+                <img src="https://media.giphy.com/media/26tOZ42Mg6pbTUPHW/giphy.gif" style="width:100%">
+            `;
+        }
+    </script>
+</body>
+</html>
