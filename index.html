@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Miraj is Gay</title>
+    <title>Will you be my Valentine?</title>
     <style>
         body {
             display: flex;
@@ -13,7 +13,7 @@
             margin: 0;
             background-color: #ffdeeb;
             font-family: sans-serif;
-            overflow: hidden; /* Prevents scrolling when button moves */
+            overflow: hidden;
             touch-action: manipulation;
         }
         .card {
@@ -25,16 +25,21 @@
             width: 85%;
             max-width: 350px;
             position: relative;
-            min-height: 300px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-        img { width: 120px; margin-bottom: 15px; }
-        h1 { font-size: 1.5rem; color: #333; }
+        img { width: 100%; max-width: 250px; border-radius: 10px; margin-bottom: 15px; }
+        h1 { font-size: 1.5rem; color: #333; margin: 10px 0; }
         .btn-container {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
             height: 50px;
+            width: 100%;
         }
         button {
             padding: 10px 25px;
@@ -42,18 +47,18 @@
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
-            touch-action: none; /* Prevents default phone behavior */
+            touch-action: none;
         }
         #yesBtn { 
             background-color: #e91e63; 
-            color: white;
-            z-index: 1; /* Keeps Yes below the No button initially */
+            color: white; 
+            z-index: 1;
         }
         #noBtn { 
             background-color: #eee; 
             color: #444; 
             position: absolute;
-            z-index: 10; /* Ensures No floats ABOVE everything else */
+            z-index: 10;
             transition: 0.1s;
         }
     </style>
@@ -61,8 +66,8 @@
 <body>
 
     <div class="card" id="mainCard">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4eXF4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif">
-        <h1>Are you Gay?</h1>
+        <img id="displayImg" src="https://media.tenor.com/A9f9K_f5G_0AAAAC/pepe-julien.gif">
+        <h1 id="mainHeading">Name will you be my Valentine?</h1>
         <div class="btn-container">
             <button id="yesBtn" onclick="celebrate()">Yes</button>
             <button id="noBtn">No</button>
@@ -74,30 +79,22 @@
         const card = document.getElementById('mainCard');
 
         function moveButton() {
-            // Calculate random position within the card
             const maxX = card.clientWidth - noBtn.clientWidth;
             const maxY = card.clientHeight - noBtn.clientHeight;
-            
-            const newX = Math.random() * maxX;
-            const newY = Math.random() * maxY;
-            
-            noBtn.style.left = newX + 'px';
-            noBtn.style.top = newY + 'px';
+            noBtn.style.left = Math.random() * maxX + 'px';
+            noBtn.style.top = Math.random() * maxY + 'px';
         }
 
-        // Works for Laptop
         noBtn.addEventListener('mouseover', moveButton);
-        
-        // Works for Phone (triggers when they try to tap it)
         noBtn.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // Stops the actual "click" from happening
+            e.preventDefault();
             moveButton();
         });
 
         function celebrate() {
             document.getElementById('mainCard').innerHTML = `
                 <h1>YAY! 🎉</h1>
-                <img src="https://media.giphy.com/media/26tOZ42Mg6pbTUPHW/giphy.gif" style="width:100%">
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnhmdmNxNnFmNnFmNnFmNnFmNnFmNnFmNnFmNnFmNnFmNnFmJlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/daf7b7/giphy.gif" style="width:100%; max-width: 300px;">
             `;
         }
     </script>
